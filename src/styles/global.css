@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* PrimeReact Core CSS */
+@import "primereact/resources/primereact.min.css";
+/* PrimeIcons */
+@import "primeicons/primeicons.css";
+/* PrimeReact Theme (Midnight Blue/Dark) */
+@import "primereact/resources/themes/lara-dark-blue/theme.css";
+
+@theme {
+  --font-sans: 'Pretendard Variable', 'Pretendard', sans-serif;
+  --color-dark-bg: #0b0f19;
+  --color-dark-surface: #111827;
+  --color-primary-glow: rgba(59, 130, 246, 0.5);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark-bg text-slate-200 antialiased;
+    font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

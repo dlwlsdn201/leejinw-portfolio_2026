@@ -1,0 +1,15 @@
+{
+  "order": 3,
+  "period": "2021 - 2025",
+  "title": "특이사항 (Certificates & Awards)",
+  "company": "자격증 및 어학 내역",
+  "description": [
+    "정보처리기사 (2021)",
+    "AWS Certified Solutions Architect – Associate (2023)",
+    "SQL 개발자(SQLD) (2022)",
+    "TOEIC 900점 / OPIC AL 취득"
+  ],
+  "icon": "pi pi-id-card",
+  "color": "#2563eb",
+  "skills": ["AWS", "SQLD", "Certification", "English"]
+}

@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "period": "2015.03 - 2021.02",
+  "title": "학력 (Education)",
+  "company": "한국대학교 컴퓨터공학과",
+  "description": [
+    "컴퓨터공학 학사 졸업 (GPA 4.2/4.5)",
+    "자료구조, 알고리즘, 운영체제 등 핵심 CS 과목 이수",
+    "웹 프론트엔드 성능 최적화 관련 졸업 논문 작성"
+  ],
+  "icon": "pi pi-book",
+  "color": "#60a5fa",
+  "skills": ["Computer Science", "Data Structure", "Algorithm"]
+}

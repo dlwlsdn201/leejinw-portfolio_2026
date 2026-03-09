@@ -1,0 +1,15 @@
+{
+  "order": 2,
+  "period": "2021.03 - 현재",
+  "title": "현업 경력 (Experience)",
+  "company": "(주)에이비씨 테크놀로지",
+  "description": [
+    "시니어 프론트엔드 개발자 (5년차)",
+    "대규모 데이터 시각화 대시보드 및 엔터프라이즈 솔루션 프론트엔드 설계",
+    "React/Next.js 기반 마이크로 프론트엔드 아키텍처 도입 및 리딩",
+    "FE 팀 기술 스택 표준화 및 코드 리뷰 문화 정착"
+  ],
+  "icon": "pi pi-briefcase",
+  "color": "#3b82f6",
+  "skills": ["React", "Next.js", "TypeScript", "Performance Tuning"]
+}

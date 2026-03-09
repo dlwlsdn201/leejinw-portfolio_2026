@@ -1,0 +1,19 @@
+---
+import ContactForm from './ContactForm';
+---
+<section id="contact" class="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-dark-bg py-20 relative overflow-hidden">
+  <!-- Decorative background -->
+  <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none translate-x-1/4"></div>
+
+  <div class="max-w-3xl w-full px-6 z-10 w-full overflow-y-auto max-h-screen pt-12 pb-24 scrollbar-hide flex flex-col items-center justify-center">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-white inline-block relative">
+        Get In Touch
+        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-blue-500 rounded-full"></div>
+      </h2>
+      <p class="text-gray-400 mt-6 text-lg">새로운 도전을 위한 제안을 기다립니다.</p>
+    </div>
+    
+    <ContactForm client:visible />
+  </div>
+</section>

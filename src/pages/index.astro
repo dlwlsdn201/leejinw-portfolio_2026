@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DotNavigator from '../components/DotNavigator';
+import IntroSection from '../features/intro/IntroSection.astro';
+import CareerSection from '../features/career/CareerSection.astro';
+import ProjectsSection from '../features/projects/ProjectsSection.astro';
+import AlbumSection from '../features/album/AlbumSection.astro';
+import ContactSection from '../features/contact/ContactSection.astro';
+---
+
+<Layout title="Lee Jinwoo | 5년차 프론트엔드 개발자 포트폴리오">
+  <!-- React Island for Navigation -->
+  <DotNavigator client:load />
+
+  <!-- JS-Controlled FullPage Container (locked on desktop, free on mobile) -->
+  <main class="h-screen w-full md:overflow-y-hidden overflow-y-auto relative scrollbar-hide">
+    
+    <IntroSection />
+    <CareerSection />
+    <ProjectsSection />
+    <AlbumSection />
+    <ContactSection />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const main = document.querySelector('main');
+      if (!main) return;
+      
+      const sections = Array.from(main.querySelectorAll('section'));
+      let targetIndex = 0;
+      let isAnimating = false;
+
+      main.addEventListener('wheel', (e) => {
+        // 1. Allow internal scrollable areas to scroll natively
+        const target = e.target as HTMLElement;
+        if (target && typeof target.closest === 'function') {
+          const scrollableAncestor = target.closest('.overflow-y-auto, .overflow-y-scroll');
+          if (scrollableAncestor && scrollableAncestor !== main) {
+            const isScrollingDown = e.deltaY > 0;
+            const reachedBottom = Math.ceil(scrollableAncestor.scrollTop + scrollableAncestor.clientHeight) >= scrollableAncestor.scrollHeight;
+            const reachedTop = scrollableAncestor.scrollTop <= 0;
+
+            if ((isScrollingDown && !reachedBottom) || (!isScrollingDown && !reachedTop)) {
+              return; // Let browser natively scroll this internal container
+            }
+          }
+        }
+
+        // 2. Prevent native scroll, UNLESS it's a small screen where we might need internal scrolling for long sections
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) {
+          e.preventDefault();
+        }
+
+        // 3. Ignore minor trackpad noise 
+        if (Math.abs(e.deltaY) < 15 || isAnimating) return;
+
+        // 4. Strict 1-step locking (only on desktop-like behavior)
+        if (!isMobile) {
+          if (e.deltaY > 0 && targetIndex < sections.length - 1) {
+            targetIndex++;
+            isAnimating = true;
+          } else if (e.deltaY < 0 && targetIndex > 0) {
+            targetIndex--;
+            isAnimating = true;
+          } else {
+            return;
+          }
+          
+          sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+          
+          setTimeout(() => {
+            isAnimating = false;
+          }, 800);
+        }
+        
+      }, { passive: false });
+
+      // Handle DotNavigator clicks to sync state
+      window.addEventListener('navigateSection', (e) => {
+        const id = (e as CustomEvent).detail.id;
+        const targetSecIndex = sections.findIndex(sec => sec.id === id);
+        if (targetSecIndex !== -1) {
+          targetIndex = targetSecIndex;
+          sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</Layout>

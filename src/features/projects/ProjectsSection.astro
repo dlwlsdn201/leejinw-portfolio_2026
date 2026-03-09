@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
+import ProjectsGrid from './ProjectsGrid';
+import type { ProjectItem } from './ProjectsGrid';
+
+const projectEntries = await getCollection('projects');
+const sortedEntries = projectEntries.sort((a, b) => a.data.order - b.data.order);
+
+const items: ProjectItem[] = await Promise.all(
+  sortedEntries.map(async (entry) => {
+    // Convert raw markdown body to HTML string for the React component
+    const bodyHtml = await marked.parse(entry.body);
+    
+    return {
+      id: entry.id,
+      order: entry.data.order,
+      title: entry.data.title,
+      summary: entry.data.summary,
+      thumbnail: entry.data.thumbnail,
+      tags: entry.data.tags,
+      repoUrl: entry.data.repoUrl,
+      liveUrl: entry.data.liveUrl,
+      bodyHtml,
+    };
+  })
+);
+---
+<section id="projects" class="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-dark-bg py-20 relative overflow-hidden">
+  <div class="max-w-7xl w-full px-6 z-10 w-full overflow-y-auto max-h-screen pt-12 pb-24 scrollbar-hide">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-white inline-block relative">
+        Featured Projects
+        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-blue-500 rounded-full"></div>
+      </h2>
+      <p class="text-gray-400 mt-6 text-lg">주요 개발 프로젝트와 문제 해결 경험</p>
+    </div>
+    
+    <ProjectsGrid items={items} client:visible />
+  </div>
+</section>
