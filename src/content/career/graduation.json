@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "period": "2013.02 - 2021.02",
+  "title": "학력 (Graduation)",
+  "subTitle": "국립 경상대학교 정보통신공학과",
+  "description": [
+    "정보통신공학 학사 조기 졸업 (학점: 4.08/4.5)",
+    "자료구조, 알고리즘, 운영체제 등 핵심 CS 과목 이수",
+    "파이썬 프로그래밍, 자바 기반 모바일 프로그래밍 등 프로그래밍 기초 전공 이수"
+  ],
+  "icon": "pi pi-graduation-cap",
+  "color": "#60a5fa",
+  "skills": ["Computer Science", "Data Structure", "Algorithm", "Python"]
+}

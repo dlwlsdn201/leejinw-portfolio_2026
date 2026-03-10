@@ -1,0 +1,17 @@
+{
+  "order": 2,
+  "period": "2021.05 - 현재 (5년차)",
+  "title": "현업 경력 (Experience)",
+  "subTitle": "(주)엔엑스",
+  "description": [
+    "enbrix 코어팀의 프론트엔드 개발자",
+    "대규모 시계열 데이터 시각화 대시보드 및 IoT 디바이스 모니터링 및 웹 제어 연동 기능 경험",
+    "React/Next.js 기반의 FSD 구조 패턴의 프론트엔드 아키텍처 최초 도입",
+    "사내 디자인 시스템 기반의 UI 컴포넌트 개발 및 NPM 패키징 관리 경험 보유",
+    "Bitbucket, Gitlab 등의 Pipeline CI/CD 최초 구축 경험 보유",
+    "사내 솔루션 운영 클라이언트들의 에너지 절감 데이터 기반의 통합 관제 대시보드 서비스 프로젝트 진행"
+  ],
+  "icon": "pi pi-briefcase",
+  "color": "#3b82f6",
+  "skills": ["React", "Next.js", "TypeScript", "styled-components", "SCSS", "Tanstack-query", "Axios", "Restful API", "Bitbucket", "Gitlab", "CI/CD", "NPM", "PNPM", "AWS"]
+}

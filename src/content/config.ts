@@ -6,7 +6,7 @@ const careerCollection = defineCollection({
     order: z.number(),
     period: z.string(),
     title: z.string(),
-    company: z.string().optional(),
+    subTitle: z.string().optional(),
     description: z.array(z.string()),
     icon: z.string().optional(),
     color: z.string().optional(),
