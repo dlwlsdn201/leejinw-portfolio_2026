@@ -1,4 +1,3 @@
-import React from 'react';
 import { Timeline } from 'primereact/timeline';
 import { Card } from 'primereact/card';
 
@@ -21,10 +20,10 @@ export default function CareerTimeline({ items }: CareerTimelineProps) {
   const customizedMarker = (item: CareerItem) => {
     return (
       <span
-        className="flex w-10 h-10 items-center justify-center text-white rounded-full z-10 shadow-lg"
+        className="flex w-12 h-12 items-center justify-center text-white rounded-full z-10 shadow-lg"
         style={{ backgroundColor: item.color || '#3b82f6' }}
       >
-        <i className={item.icon || 'pi pi-check'}></i>
+        <i style={{fontSize: '1.25rem'}} className={item.icon || 'pi pi-check'} ></i>
       </span>
     );
   };
@@ -32,7 +31,7 @@ export default function CareerTimeline({ items }: CareerTimelineProps) {
   const customizedContent = (item: CareerItem) => {
     return (
       <div className="flex flex-col items-center">
-        <Card className="mt-6 mb-4 w-72 md:w-80 border border-gray-700/50 bg-dark-surface/50 backdrop-blur-sm shadow-xl hover:border-blue-500/50 transition-colors text-left flex-shrink-0">
+        <Card className="mt-4 mb-4 mobile:w-52 tablet:w-70 laptop:w-[20vw] desktop:w-[25vw] mobile:h-max tablet:h-[52rem] laptop:h-[30rem] desktop:h-[39rem] border border-gray-700/50  overflow-y-hidden bg-dark-surface/50 backdrop-blur-sm shadow-xl hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.02] text-left flex-shrink-0">
         <div className="flex flex-col gap-2">
           <span className="text-sm font-semibold text-blue-400">{item.period}</span>
           <h3 className="text-2xl font-bold text-white">{item.title}</h3>

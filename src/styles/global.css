@@ -12,6 +12,19 @@
   --color-dark-bg: #0b0f19;
   --color-dark-surface: #111827;
   --color-primary-glow: rgba(59, 130, 246, 0.5);
+
+  /* 브레이크포인트를 정의하세요 (min-width) */
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 640;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+  
+  /* 커스텀 브레이크포인트 추가 예시 min-width) */
+  --breakpoint-mobile: 321px; 
+  --breakpoint-tablet: 641px; 
+  --breakpoint-laptop: 1025px; 
+  --breakpoint-desktop: 1441px; 
 }
 
 @layer base {
