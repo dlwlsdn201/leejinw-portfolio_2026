@@ -3,7 +3,7 @@
 5년차 프론트엔드 개발자 이진우의 포트폴리오 사이트입니다.  
 Astro 6 기반의 풀페이지 레이아웃과 Content Collections를 활용한 콘텐츠 관리 구조로 구성되어 있습니다.
 
-사이트 바로가기 [![Netlify Status](https://api.netlify.com/api/v1/badges/6b9ca043-3813-4da1-a5c7-719ec936e26f/deploy-status)](https://app.netlify.com/projects/dev-leejinw-2026/deploys)
+[🔗 사이트 바로가기](https://dev-leejinw-2026.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/6b9ca043-3813-4da1-a5c7-719ec936e26f/deploy-status)](https://app.netlify.com/projects/dev-leejinw-2026/deploys)
 
 ---
 
