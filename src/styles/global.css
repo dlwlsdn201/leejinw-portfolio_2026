@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* PrimeFlex */
+@import "primeflex/primeflex.css";
 /* PrimeReact Core CSS */
 @import "primereact/resources/primereact.min.css";
 /* PrimeIcons */

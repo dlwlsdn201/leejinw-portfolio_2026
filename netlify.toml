@@ -1,0 +1,8 @@
+# Netlify 배포 설정
+# Astro SSR + @astrojs/netlify adapter 사용 시 필수
+# 주의: Netlify UI에서 Build Command를 덮어쓰지 않도록 "Override" 해제 권장
+# Node 버전은 .nvmrc (20) 사용
+
+[build]
+  command = "pnpm run build"
+  publish = "dist"
