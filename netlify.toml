@@ -4,5 +4,5 @@
 # Node 버전은 .nvmrc (20) 사용
 
 [build]
-  command = "pnpm run build"
+  command = "npm run build"
   publish = "dist"
