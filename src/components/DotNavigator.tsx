@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const sections = [
-  { id: 'intro',    label: 'Intro',    icon: '✦' },
-  { id: 'career',   label: 'Career',   icon: '💼' },
-  { id: 'projects', label: 'Projects', icon: '🗃️' },
-  { id: 'album',    label: 'Album',    icon: '📷' },
-  { id: 'contact',  label: 'Contact',  icon: '📞' },
+  { id: "intro", label: "Intro", icon: "✦" },
+  { id: "career", label: "Career", icon: "💼" },
+  { id: "projects", label: "Projects", icon: "🗃️" },
+  { id: "album", label: "Album", icon: "📷" },
+  { id: "contact", label: "Contact", icon: "📞" },
 ];
 
 const navigate = (id: string) => {
   // Fire custom event for JS full-page scroll handler (desktop)
-  const event = new CustomEvent('navigateSection', { detail: { id } });
+  const event = new CustomEvent("navigateSection", { detail: { id } });
   window.dispatchEvent(event);
 
   // Also scroll natively for mobile
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 };
 
 export default function DotNavigator() {
-  const [activeSection, setActiveSection] = useState('intro');
+  const [activeSection, setActiveSection] = useState("intro");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,7 +30,7 @@ export default function DotNavigator() {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     sections.forEach(({ id }) => {
@@ -44,7 +44,7 @@ export default function DotNavigator() {
   return (
     <>
       {/* ─── Desktop: vertical right-side dot navigator ─── */}
-      <div className="hidden md:flex fixed right-6 xl:right-10 top-1/2 -translate-y-1/2 flex-col gap-5 z-50">
+      <div className='hidden md:flex fixed right-6 xl:right-10 top-1/2 -translate-y-1/2 flex-col gap-5 z-50'>
         {sections.map(({ id, label }) => (
           <button
             key={id}
@@ -53,8 +53,8 @@ export default function DotNavigator() {
             title={label}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               activeSection === id
-                ? 'bg-blue-400 scale-125 shadow-[0_0_15px_rgba(96,165,250,0.8)]'
-                : 'bg-gray-600 hover:bg-gray-400 hover:scale-110'
+                ? "bg-blue-400 scale-125 shadow-[0_0_15px_rgba(96,165,250,0.8)]"
+                : "bg-gray-600 hover:bg-gray-400 hover:scale-110"
             }`}
           />
         ))}
@@ -62,12 +62,11 @@ export default function DotNavigator() {
 
       {/* ─── Mobile: bottom pill navigation ─── */}
       <nav
-        className="md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50
+        className='md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50
                    flex items-center gap-1 px-4 py-2 rounded-full
                    bg-white/5 backdrop-blur-xl border border-white/10
-                   shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-        aria-label="Section navigation"
-      >
+                   shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+        aria-label='Section navigation'>
         {sections.map(({ id, label, icon }) => {
           const isActive = activeSection === id;
           return (
@@ -78,21 +77,20 @@ export default function DotNavigator() {
               className={`
                 relative flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold
                 transition-all duration-300 ease-out select-none
-                ${isActive
-                  ? 'bg-blue-500/20 text-blue-300 shadow-[0_0_12px_rgba(96,165,250,0.4)]'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                ${
+                  isActive
+                    ? "bg-blue-500/20 text-blue-300 shadow-[0_0_12px_rgba(96,165,250,0.4)]"
+                    : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
                 }
-              `}
-            >
-              <span className="text-base leading-none">{icon}</span>
+              `}>
+              <span className='text-base leading-none'>{icon}</span>
               <span
                 className={`overflow-hidden transition-all duration-300 ease-out whitespace-nowrap
-                  ${isActive ? 'max-w-[4rem] opacity-100' : 'max-w-0 opacity-0'}`}
-              >
+                  ${isActive ? "max-w-[4rem] opacity-100" : "max-w-0 opacity-0"}`}>
                 {label}
               </span>
               {isActive && (
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-400" />
+                <span className='absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-400' />
               )}
             </button>
           );

@@ -1,5 +1,5 @@
-import { Timeline } from 'primereact/timeline';
-import { Card } from 'primereact/card';
+import { Timeline } from "primereact/timeline";
+import { Card } from "primereact/card";
 
 interface CareerItem {
   order: number;
@@ -20,54 +20,64 @@ export default function CareerTimeline({ items }: CareerTimelineProps) {
   const customizedMarker = (item: CareerItem) => {
     return (
       <span
-        className="flex w-12 h-12 items-center justify-center text-white rounded-full z-10 shadow-lg"
-        style={{ backgroundColor: item.color || '#3b82f6' }}
-      >
-        <i style={{fontSize: '1.25rem'}} className={item.icon || 'pi pi-check'} ></i>
+        className='flex w-12 h-12 items-center justify-center text-white rounded-full z-10 shadow-lg'
+        style={{ backgroundColor: item.color || "#3b82f6" }}>
+        <i
+          style={{ fontSize: "1.25rem" }}
+          className={item.icon || "pi pi-check"}></i>
       </span>
     );
   };
 
   const customizedContent = (item: CareerItem) => {
     return (
-      <div className="flex flex-col items-center">
-        <Card className="group relative mt-4 mb-4 mobile:w-52 tablet:w-70 laptop:w-[20vw] desktop:w-[25vw] mobile:h-max tablet:h-208 laptop:h-120 desktop:h-156 border border-gray-700/50 overflow-hidden bg-dark-surface/50 backdrop-blur-sm shadow-xl cursor-pointer hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.02] text-left shrink-0 ">
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-semibold text-blue-400">{item.period}</span>
-          <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-          {item.subTitle && (
-            <h4 className="text-lg text-gray-300 font-medium">{item.subTitle}</h4>
-          )}
-          <ul className="mt-4 flex flex-col gap-2 text-gray-400 list-disc list-inside">
-            {item.description.map((desc, i) => (
-              <li key={i} className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: desc }}></li>
-            ))}
-          </ul>
-          {/* Hover Overlay for Skills */}
-          {item.skills && item.skills.length > 0 && (
-            <div className="absolute inset-0 z-20 bg-slate-900/85 backdrop-blur-[2px] p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-                {item.skills.map((skill, i) => (
-                  <span key={i} className="px-3 py-1 bg-blue-500/20 hover:bg-blue-500/50 transition-all text-blue-300 rounded-full text-sm font-medium border border-blue-500/30 shadow-[0_0_10px_rgba(59,130,246,0.2)] transform translate-y-4 group-hover:translate-y-0 duration-300 origin-bottom">
-                    {skill}
-                  </span>
-                ))}
+      <div className='flex flex-col items-center'>
+        <Card className='group relative mt-4 mb-4 mobile:w-52 tablet:w-70 laptop:w-[25vw] mobile:h-max tablet:h-208 laptop:h-150 desktop:h-156 border border-gray-700/50 overflow-hidden bg-dark-surface/50 backdrop-blur-sm shadow-xl cursor-pointer hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.02] text-left shrink-0 '>
+          <div className='flex flex-col gap-2'>
+            <span className='text-sm font-semibold text-blue-400'>
+              {item.period}
+            </span>
+            <h3 className='text-2xl font-bold text-white'>{item.title}</h3>
+            {item.subTitle && (
+              <h4 className='text-lg text-gray-300 font-medium'>
+                {item.subTitle}
+              </h4>
+            )}
+            <ul className='mt-4 flex flex-col gap-2 text-gray-400 list-disc list-inside'>
+              {item.description.map((desc, i) => (
+                <li
+                  key={i}
+                  className='text-base leading-relaxed'
+                  dangerouslySetInnerHTML={{ __html: desc }}></li>
+              ))}
+            </ul>
+            {/* Hover Overlay for Skills */}
+            {item.skills && item.skills.length > 0 && (
+              <div className='absolute inset-0 z-20 bg-slate-900/85 backdrop-blur-[2px] p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                <div className='flex flex-wrap items-center justify-center gap-2 mb-4'>
+                  {item.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className='px-3 py-1 bg-blue-500/20 hover:bg-blue-500/50 transition-all text-blue-300 rounded-full text-sm font-medium border border-blue-500/30 shadow-[0_0_10px_rgba(59,130,246,0.2)] transform translate-y-4 group-hover:translate-y-0 duration-300 origin-bottom'>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      </Card>
+            )}
+          </div>
+        </Card>
       </div>
     );
   };
 
   return (
-    <div className="w-full hide-scrollbar overflow-x-auto md:overflow-x-visible">
+    <div className='w-full hide-scrollbar overflow-x-auto md:overflow-x-visible'>
       <Timeline
         value={items}
-        layout="horizontal"
-        align="top"
-        className="customized-timeline w-full px-4"
+        layout='horizontal'
+        align='top'
+        className='customized-timeline flex w-full px-4'
         marker={customizedMarker}
         content={customizedContent}
       />

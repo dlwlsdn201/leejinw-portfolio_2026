@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* PrimeFlex */
-@import "primeflex/primeflex.css";
 /* PrimeReact Core CSS */
 @import "primereact/resources/primereact.min.css";
 /* PrimeIcons */
@@ -10,7 +8,7 @@
 @import "primereact/resources/themes/lara-dark-blue/theme.css";
 
 @theme {
-  --font-sans: 'Pretendard Variable', 'Pretendard', sans-serif;
+  --font-sans: "Pretendard Variable", "Pretendard", sans-serif;
   --color-dark-bg: #0b0f19;
   --color-dark-surface: #111827;
   --color-primary-glow: rgba(59, 130, 246, 0.5);
@@ -21,12 +19,12 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
   --breakpoint-2xl: 1920px;
-  
+
   /* 커스텀 브레이크포인트 추가 예시 min-width) */
-  --breakpoint-mobile: 321px; 
-  --breakpoint-tablet: 641px; 
-  --breakpoint-laptop: 1025px; 
-  --breakpoint-desktop: 1441px; 
+  --breakpoint-mobile: 321px;
+  --breakpoint-tablet: 641px;
+  --breakpoint-laptop: 1025px;
+  --breakpoint-desktop: 1441px;
 }
 
 @layer base {
@@ -35,7 +33,7 @@
   }
   body {
     @apply bg-dark-bg text-slate-200 antialiased;
-    font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+    font-family: "Pretendard Variable", "Pretendard", sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
