@@ -1,26 +1,33 @@
-import React from 'react';
 import { Image } from 'primereact/image';
 
-const MOCK_PHOTOS = [
-  { itemImageSrc: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop', alt: 'Desk Setup' },
-  { itemImageSrc: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop', alt: 'Coding' },
-  { itemImageSrc: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop', alt: 'Coffee' },
-  { itemImageSrc: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop', alt: 'Meeting' },
-  { itemImageSrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop', alt: 'Team' },
-  { itemImageSrc: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop', alt: 'Work' },
-];
+// src/assets/album 내부의 확장자가 일치하는 이미지들을 일괄적으로 가져옵니다.
+// HEIC 및 DNG는 브라우저에서 직접 렌더링되지 않으므로, 일반적인 웹 이미지 포맷만 필터링합니다.
+const imagesGlob = import.meta.glob<{ default: string | { src: string } }>('../../assets/album/*.{jpeg,jpg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { eager: true });
+
+const ALBUM_PHOTOS = Object.values(imagesGlob).map((img, idx) => {
+  const defaultExport = img.default;
+  // Astro 3+ 환경에서는 ImageMetadata 객체가 반환되어 .src 속성에 경로가 담깁니다.
+  const src = typeof defaultExport === 'string' ? defaultExport : defaultExport.src;
+  
+  return {
+    itemImageSrc: src,
+    alt: `Album Photo ${idx + 1}`
+  };
+});
 
 export default function AlbumGrid() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full mt-10">
-      {MOCK_PHOTOS.map((photo, index) => (
-        <div key={index} className="overflow-hidden rounded-lg relative group h-48 md:h-64 shadow-md bg-dark-surface/50 border border-gray-800">
+    <div className="grid mobile:grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-6 w-[60%] desktop:w-[80%] mt-6 mx-auto">
+      {ALBUM_PHOTOS.map((photo, index) => (
+        <div key={index} className="overflow-hidden rounded-lg relative group w-full aspect-3/4 shadow-md bg-dark-surface/50 border border-gray-800">
           <Image
             src={photo.itemImageSrc}
             alt={photo.alt}
             preview
-            className="w-full h-full object-cover"
-            imageClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            
+            indicatorIcon={<i className='pi pi-arrow-up-right-and-arrow-down-left-from-center'></i>}
+            className="w-full h-full object-fill"
+            imageClassName="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition-colors duration-300 pointer-events-none"></div>
         </div>

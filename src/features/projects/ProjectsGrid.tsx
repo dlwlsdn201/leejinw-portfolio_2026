@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card } from 'primereact/card';
 import { Dialog } from 'primereact/dialog';
 
@@ -25,7 +25,7 @@ export default function ProjectsGrid({ items }: { items: ProjectItem[] }) {
             <Card className="h-full bg-dark-surface/80 border border-gray-700/50 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden rounded-xl">
               <div className="relative h-48 -mx-6 -mt-6 mb-4 overflow-hidden">
                 <img alt={item.title} src={item.thumbnail} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-surface to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-linear-to-t from-dark-surface to-transparent opacity-80" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
               <p className="text-gray-400 text-sm mb-4 line-clamp-3 leading-relaxed">{item.summary}</p>
