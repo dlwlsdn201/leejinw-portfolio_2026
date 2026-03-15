@@ -15,7 +15,7 @@
 
   /* 브레이크포인트를 정의하세요 (min-width) */
   --breakpoint-sm: 320px;
-  --breakpoint-md: 640;
+  --breakpoint-md: 640px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
   --breakpoint-2xl: 1920px;

@@ -16,10 +16,9 @@ export interface ProjectItem {
 
 export default function ProjectsGrid({ items }: { items: ProjectItem[] }) {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10">
+      <div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-8 w-full mt-10">
         {items.map((item) => (
           <div key={item.id} className="cursor-pointer group h-full" onClick={() => setSelectedProject(item)}>
             <Card className="h-full bg-dark-surface/80 border border-gray-700/50 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden rounded-xl">
