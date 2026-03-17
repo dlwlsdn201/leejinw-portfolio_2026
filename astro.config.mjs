@@ -16,6 +16,10 @@ export default defineConfig({
     ssr: {
       noExternal: ["primereact"],
     },
+    // React 19 + Vite: react-dom/client CJS → ESM 변환 시 createRoot export 누락 방지
+    optimizeDeps: {
+      include: ["react", "react-dom", "react-dom/client"],
+    },
   },
 
   adapter: netlify({
