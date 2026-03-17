@@ -22,15 +22,16 @@ export default function DotNavigator() {
   const [activeSection, setActiveSection] = useState("intro");
 
   useEffect(() => {
+    // 스크롤 시 뷰포트에 들어온 섹션 감지 (데스크톱 wheel + 모바일 스크롤)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.target.id) {
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.4 },
+      { root: null, rootMargin: "0px", threshold: 0.4 },
     );
 
     sections.forEach(({ id }) => {
@@ -38,13 +39,22 @@ export default function DotNavigator() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    // Dot 클릭 시 즉시 activeSection 동기화 (navigateSection 이벤트)
+    const handleNavigate = (e: CustomEvent<{ id: string }>) => {
+      if (e.detail?.id) setActiveSection(e.detail.id);
+    };
+    window.addEventListener("navigateSection", handleNavigate as EventListener);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("navigateSection", handleNavigate as EventListener);
+    };
   }, []);
 
   return (
     <>
       {/* ─── Desktop: vertical right-side dot navigator ─── */}
-      <div className='hidden md:flex fixed right-6 xl:right-10 top-1/2 -translate-y-1/2 flex-col gap-5 z-50'>
+      <div className='hidden laptop:flex fixed right-6 xl:right-10 top-1/2 -translate-y-1/2 flex-col gap-5 z-50'>
         {sections.map(({ id, label }) => (
           <button
             key={id}
@@ -62,7 +72,7 @@ export default function DotNavigator() {
 
       {/* ─── Mobile: bottom pill navigation ─── */}
       <nav
-        className='md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50
+        className='laptop:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50
                    flex items-center gap-1 px-4 py-2 rounded-full
                    bg-white/5 backdrop-blur-xl border border-white/10
                    shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
@@ -86,7 +96,7 @@ export default function DotNavigator() {
               <span className='text-base leading-none'>{icon}</span>
               <span
                 className={`overflow-hidden transition-all duration-300 ease-out whitespace-nowrap
-                  ${isActive ? "max-w-[4rem] opacity-100" : "max-w-0 opacity-0"}`}>
+                  ${isActive ? "max-w-16 opacity-100" : "max-w-0 opacity-0"}`}>
                 {label}
               </span>
               {isActive && (
