@@ -10,7 +10,8 @@ const sortedEntries = projectEntries.sort((a, b) => a.data.order - b.data.order)
 const items: ProjectItem[] = await Promise.all(
   sortedEntries.map(async (entry) => {
     // Convert raw markdown body to HTML string for the React component
-    const bodyHtml = marked.parse(entry.body);
+    // marked.parse() returns string | Promise<string>; await ensures string
+    const bodyHtml = await marked.parse(entry.body || '');
     
     return {
       id: entry.id,
