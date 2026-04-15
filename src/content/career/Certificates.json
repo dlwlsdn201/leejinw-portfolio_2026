@@ -1,6 +1,6 @@
 {
   "order": 3,
-  "period": "2015.03 - 2023.08",
+  "period": "2015.03 - 현재",
   "title": "자격 및 역량 (Certificates & Skills)",
   "subTitle": "자격증 및 역량",
   "description": [
@@ -17,5 +17,5 @@
   ],
   "icon": "pi pi-id-card",
   "color": "#2563eb",
-  "skills": ["ISTQB", "정보처리기사", "리눅스마스터", "네트워크관리사", "소방안전관리자", "컴퓨터활용능력", "Claude code", "Cursor", "Gemini", "React", "Next.js", "Styled-components", "TailwindCSS", "Viteset", "Typescript", "Javascript", "SCSS", "tanstack-query", "Zustands", "Jotai"]
+  "skills": ["ISTQB", "정보처리기사", "리눅스마스터", "네트워크관리사", "소방안전관리자", "컴퓨터활용능력", "Claude code", "Cursor", "Gemini", "React", "Next.js", "Styled-components", "TailwindCSS", "Vitest", "Typescript", "Javascript", "SCSS", "axios","tanstack-query", "Zustands", "Zustand", "Jotai"]
 }
