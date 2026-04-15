@@ -21,7 +21,7 @@ const ALBUM_PHOTOS = Object.values(imagesGlob).map((img, idx) => {
 
 export default function AlbumGrid() {
   return (
-    <div className='grid mobile:grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-6 w-[60%] desktop:w-[80%] mt-6 mx-auto'>
+    <div className='grid mobile:grid-cols-3 tablet:grid-cols-2 desktop:grid-cols-5 mobile:gap-2.5 tablet:gap-4 desktop:gap-6 w-[60%] desktop:w-[80%] mt-6 mx-auto'>
       {ALBUM_PHOTOS.map((photo, index) => (
         <div
           key={index}
